@@ -1,0 +1,16 @@
+.movies-page-header {
+  ion-text {
+    margin: 8px 16px;
+  }
+}
+.movies-list-container {
+  display: flex;
+  ion-item {
+    &.movie-card-container{
+      width: 200px;
+      height: 300px;
+      margin: 8px;
+      border-radius: 5px;
+    }
+  }
+}

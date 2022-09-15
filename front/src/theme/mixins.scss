@@ -1,0 +1,40 @@
+
+@mixin media-min-max-width($minvalue, $maxvalue) {
+  @if $minvalue != null and $maxvalue != null {
+    $minvalue: get-breakpoint-value($minvalue);
+    $maxvalue: get-breakpoint-value($maxvalue);
+    @media (min-width: $minvalue) and (max-width: $maxvalue) {
+      @content;
+    }
+  } @else if $minvalue != null {
+    $minvalue: get-breakpoint-value($minvalue);
+    @media (min-width: $minvalue) {
+      @content;
+    }
+  } @else if $maxvalue != null {
+    $maxvalue: get-breakpoint-value($maxvalue);
+    @media (max-width: $maxvalue) {
+      @content;
+    }
+  }
+}
+
+@mixin media-min-max-height($minvalue, $maxvalue) {
+  @if $minvalue != null and $maxvalue != null {
+    $minvalue: get-breakpoint-value($minvalue);
+    $maxvalue: get-breakpoint-value($maxvalue);
+    @media (min-height: $minvalue) and (max-height: $maxvalue) {
+      @content;
+    }
+  } @else if $minvalue != null {
+    $minvalue: get-breakpoint-value($minvalue);
+    @media (min-height: $minvalue) {
+      @content;
+    }
+  } @else if $maxvalue != null {
+    $maxvalue: get-breakpoint-value($maxvalue);
+    @media (max-height: $maxvalue) {
+      @content;
+    }
+  }
+}

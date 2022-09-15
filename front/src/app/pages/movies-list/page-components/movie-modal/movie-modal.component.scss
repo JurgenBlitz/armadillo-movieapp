@@ -1,0 +1,10 @@
+.modal-header {
+  --background: var(--ion-color-primary-tint);
+  height: 64px;
+  --min-height: 64px;
+  .modal-header-text {
+    margin-left: 28px;
+    color: white;
+    font-size: 24px;
+  }
+}

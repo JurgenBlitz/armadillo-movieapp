@@ -1,0 +1,145 @@
+// Style below for the forms over dark background as the ones present in login, profile selection, settings, etc.
+@import '../../../theme/variables.scss';
+@import '../../../theme/mixins.scss';
+.standard-form-container {
+  position: relative;
+  width: 100%;
+  .form-header-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    .form-header {
+      font-size: 16px;
+    }
+  }
+  .standard-form-items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+    &.smarttv-form-items {
+      margin-top: 20px;
+    }
+    form {
+      @include media-min-max-width( 'xs', 'ssm') {
+        width: 300px;
+      }
+      @include media-min-max-width( 'ssm', 'sm') {
+        width: 360px;
+      }
+      width: 500px;
+      .input-spacer {
+        width: 100%;
+        margin-bottom: 40px;
+        ion-select {
+          @include media-min-max-height("xs", "sm") {
+            height: 44px!important;
+            padding: 4px !important;
+          }
+          width: 100%;
+          padding: 5px;
+          height: 64px;
+          background: var(--ion-color-mediumgrey);
+          border-radius: 2px;
+          color: var(--form-default-text);
+        }
+        .input-inner {
+          width: 100%;
+          padding: 5px;
+          height: 64px;
+          background: var(--ion-color-mediumgrey);
+          border-radius: 2px;
+          position: relative;
+          .success-marker {
+            position: absolute;
+            top: 0;
+            right: 14px;
+            z-index: 10;
+            padding-top: 16px;
+            height: 100%;
+            ion-icon {
+              font-size: 34px;
+            }
+          }
+          label {
+            color: var(--form-default-text);
+          }
+          .standard-bfb-label {
+            color: var(--form-grey-text);
+            position: absolute;
+            z-index: 5;
+            margin-left: 10px;
+          }
+          .standard-bfb-input {
+            width: 100%;
+            height: 100%;
+            background: var(--ion-color-mediumgrey);
+            color: var(--form-default-text);
+            input {
+              font-weight: 500;
+              line-height: 21.6px;
+              color: var(--form-default-text);
+              &.native-input {
+                --padding-start: 10px;
+                --padding-end: 10px;
+                --padding-top: 28px;
+                height: 100%;
+              }
+            }
+            input:focus {
+              border: 2px solid var(--form-input-border);
+              border-radius: 2px;
+            } 
+          }
+        }
+      }
+      .input-spacer:last-of-type {
+        margin-bottom: 56px;
+      }
+      .primary-btn {
+        width: calc(100% - 24px);
+        margin-left: 12px;
+        margin-right: 12px;
+        height: 40px;
+        border-radius: 2px;
+        background: var(--button-primary);
+        font-size: 16px;
+      }
+      
+      .primary-btn-disabled {
+        @extend .primary-btn;
+        background: var(--button-primary-disabled);
+      }
+    }
+  }
+}
+
+.form-bottom-link {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size : 18px;
+  line-height: 21.6px;
+  text-align: center;
+}
+.standard-form-error {
+  height: 22px;
+  margin-top: 5px;
+}
+.form-error-msg {
+  color: var(--form-error-boxtint);
+}
+.input-valid {
+  border: 1px solid var(--form-success-boxtint);
+}
+
+.input-error {
+  border: 2px solid var(--form-error-boxtint);
+  border-radius: 2px;
+}
+
+.item-interactive.ion-valid,
+.item-interactive.ion-invalid {
+  --highlight-background: transparent;
+}

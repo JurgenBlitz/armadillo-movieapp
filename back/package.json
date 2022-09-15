@@ -1,0 +1,21 @@
+{
+  "name": "armadillo-movieapp-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "armadillo"
+  ],
+  "author": "Me (Jorge Gonzalez-Paramo)",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "md5": "^2.3.0",
+    "sqlite3": "^5.1.0"
+  }
+}

@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="standard-form-container">
+    <ion-col>
+      <ion-item>
+        <div class="form-header-items">
+          <ion-text class="centered-text default-text form-header">The Movie DB</ion-text>
+          <span>Log in to view the latest movies in theaters</span>
+        </div>
+      </ion-item>
+      <ion-row class="standard-form-items">
+        <form
+        [formGroup]="loginForm"
+        (submit)="onLogin()">
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': usernameControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="usernameControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">User name</ion-label> 
+            <ion-input class="standard-bfb-input" type="text" name="username" formControlName="username"
+              [ngClass]="{'input-error': usernameControl.invalid && usernameControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': passwordControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="passwordControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">Password</ion-label> 
+            <ion-input class="standard-bfb-input" type="password" name="password" formControlName="password"
+              [ngClass]="{'input-error': passwordControl.invalid && passwordControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+        <button
+          class="primary-btn"
+          [disabled]="!loginForm.valid"
+          [ngClass]="{'primary-btn-disabled': !loginForm.valid}">
+          <ion-text>Login</ion-text>
+        </button>
+
+        </form>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

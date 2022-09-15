@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row *ngIf="loading">
+    <ion-spinner name="bubbles" color="white"></ion-spinner>
+  </ion-row>
+  <ion-row class="movies-page-header" *ngIf="currentMovies?.length">
+    <ion-text>Current playing movies</ion-text>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <div *ngIf="currentMovies?.length" class="movies-list-container">
+        <ng-container>
+          <ion-grid>
+            <ion-row>
+              <ion-col sizeLg="3" sizeMd="4" sizeXs="6" *ngFor="let movie of currentMovies; let i = index">
+                <app-movie-card
+                  [movieInfo]="movie"
+                  (movieClicked)="visitMovieDetail($event)"
+                  >
+                </app-movie-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ng-container>
+      </div>
+
+      <div *ngIf="!loading && !currentMovies.length">
+        <ion-item>
+          No movies were found. Please try again later.
+        </ion-item>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
