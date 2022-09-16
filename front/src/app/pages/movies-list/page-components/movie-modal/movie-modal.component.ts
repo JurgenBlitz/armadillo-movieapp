@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { moviePosterBaseUrl } from '../../../../../shared/const';
+import { moviePosterBaseUrl } from 'src/shared/const';
 
 @Component({
   selector: 'app-movie-modal',
@@ -11,7 +11,9 @@ export class MovieModalComponent implements OnInit {
   @Input() data: any;
   public moviePoster: string;
   public movieCast: [];
-  constructor(private modalCtrl: ModalController) { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {
     this.moviePoster = `${moviePosterBaseUrl}${this.data.movieData.poster_path}`;

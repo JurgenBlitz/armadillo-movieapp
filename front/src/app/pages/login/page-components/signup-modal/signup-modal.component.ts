@@ -54,14 +54,12 @@ export class SignupModalComponent implements OnInit {
       this.usersService.signupUser(this.signupForm.value).then((res: any) => {
         if (res?.status === 200) {
           this.formError = false;
-          console.log('GOT IT!!!')
         };
       }, (error) => {
         console.log('error', error)
         this.formError = true;
       })
     }
-
   }
 
   public onModalClose() {

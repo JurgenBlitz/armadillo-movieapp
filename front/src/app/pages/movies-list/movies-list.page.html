@@ -11,6 +11,7 @@
     <ion-button *ngIf="activeList === 'current'" (click)="getPopularMovies()">Popular movies</ion-button>
     <ion-button *ngIf="activeList === 'popular'" (click)="getPopularMovies()">Current movies</ion-button>
     <ion-button (click)="refreshMovies()">Refresh</ion-button>
+    <ion-button (click)="logOut()">Log out</ion-button>
   </ion-row>
 
   <ion-row>

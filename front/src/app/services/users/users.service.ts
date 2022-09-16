@@ -8,10 +8,12 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 export class UsersService {
 
   private callUrl = environment.endpoint;
-
+  public loggedUser: any;
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.loggedUser = null;
+  }
 
   public loginUser(user) {
     return new Promise((resolve, reject) => {
@@ -31,5 +33,17 @@ export class UsersService {
         reject(error);
       })
     })
+  }
+
+  public setLoggedUser(userEmail: string) {
+    this.loggedUser = userEmail;
+  }
+
+  public getLoggedUser() {
+    return this.loggedUser;
+  }
+
+  public deleteLoggedUser() {
+    this.loggedUser = null;
   }
 }

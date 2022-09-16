@@ -12,6 +12,7 @@ Además de la mencionada SQLite, el backend usa otras librerías comunes en proj
 - **Cors**, para gestionar mejor el acceso de las peticiones del front al servidor.
 - **Axios**, para gestionar las peticiones http a los recursos externos (principalmente, las peticiones a los endpoints de The Movie Database).
 - **MD5**, para hashear las contraseñas de los usuarios en el backend.
+- **body-parser**, para formatear más cómodamente las respuestas de los servicios.
 
 Para el frontend no he añadido ninguna librería, ya que las dependencias de Ionic y de Angular me ofrecían 'out of the box' todo lo que consideraba necesario para las vistas y componentes del proyecto.
 

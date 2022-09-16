@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../../services/movies/movies.service';
-import { ModalController } from '@ionic/angular';
+import { MoviesService } from 'src/app/services/movies/movies.service';
+import { UsersService } from 'src/app/services/users/users.service';
+import { ModalController, AlertController } from '@ionic/angular';
 import { MovieModalComponent } from './page-components/movie-modal/movie-modal.component';
-import { TouchSequence } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
@@ -16,7 +17,10 @@ export class MoviesListPage implements OnInit {
 
   constructor(
     private moviesService: MoviesService,
-    private modalCtrl: ModalController
+    private usersService: UsersService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private router: Router
     )
     {
       this.activeList = 'current';
@@ -78,6 +82,29 @@ export class MoviesListPage implements OnInit {
     this.loading = true;
     this.currentMovies = [];
     this.activeList === 'current' ? this.getCurrentMovies() : this.getPopularMovies();
+  }
+
+  public async logOut() {
+    const logoutAlert = await this.alertCtrl.create({
+      header: 'Do you want to log out?',
+      inputs: [],
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => { }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.usersService.deleteLoggedUser();
+            this.router.navigate(['/login']);
+          }
+        }
+      ]
+    });
+
+    await logoutAlert.present();
   }
 
 }

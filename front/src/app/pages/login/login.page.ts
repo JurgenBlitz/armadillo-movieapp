@@ -43,6 +43,7 @@ export class LoginPage implements OnInit  {
       this.usersService.loginUser(this.loginForm.value).then((res: any) => {
         if (res?.status === 200) {
           this.formError = false;
+          this.usersService.setLoggedUser(this.loginForm.controls['email'].value)
           this.loginForm.reset();
           this.router.navigate(['/movies-list']);
         };
