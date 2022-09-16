@@ -55,8 +55,12 @@ En un proyecto que use Cordova o Capacitor, se puede anteponer el comportamiento
   - **page-components**: Todo componente que pueda extraer para aliviar de carga a una vista o página, pero que solo pueda aparecer en el contexto de dicha página, está incluido en un subdirectorio dentro de cada **page**.
   - **shared-components**: En este directorio alojo cualquier componente que pueda ser reutilizable en diferentes puntos de la app.
 
+  Como preferencoa he implementado también dos **Guards** de Angular para que un usuario no pueda volver a la página de Login sin haber hecho logout expresamente, y para que no pueda accederse a la página de movie-list sin haber hecho login, ni siquiera escribiendo la url de la ruta.
 
 
 
+## Modelo entidad-relación
+
+He incluido un png del modelo en la carpeta /assets del directorio de front.
 
 
