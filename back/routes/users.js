@@ -11,7 +11,6 @@ router.post('/login', (req, res) => {
     password = md5(req.body.password)
   ];
   db.get(query, queryparams, (error, rows) => {
-    console.log('rows', rows)
     if (error || !rows ) {
       res.status(400).json({"error":error && error.message? error.message : 'User not found'});
       return;

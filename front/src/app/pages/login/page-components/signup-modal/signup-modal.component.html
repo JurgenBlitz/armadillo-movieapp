@@ -24,11 +24,7 @@
         <ion-item class="input-spacer">
           <div class="input-inner"
             [ngClass]="{'input-valid': surnameControl.valid}">
-            <div class="success-marker">
-              <ion-icon *ngIf="firstnameControl.valid" name="checkmark-outline"></ion-icon>
-            </div>
-            <ion-label class="standard-bfb-label" position="floating">First name</ion-label> 
-            <ion-input class="standard-bfb-input" type="text" name="firstname" formControlName="firstname"
+            <ion-input class="standard-input" type="text" name="firstname" formControlName="firstname"
               [ngClass]="{'input-error': firstnameControl.invalid && firstnameControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -38,11 +34,7 @@
         <ion-item class="input-spacer">
           <div class="input-inner"
             [ngClass]="{'input-valid': surnameControl.valid}">
-            <div class="success-marker">
-              <ion-icon *ngIf="surnameControl.valid" name="checkmark-outline"></ion-icon>
-            </div>
-            <ion-label class="standard-bfb-label" position="floating">Surname</ion-label> 
-            <ion-input class="standard-bfb-input" type="text" name="surname" formControlName="surname"
+            <ion-input class="standard-input" type="text" name="surname" formControlName="surname"
               [ngClass]="{'input-error': surnameControl.invalid && surnameControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -52,11 +44,7 @@
         <ion-item class="input-spacer">
           <div class="input-inner"
             [ngClass]="{'input-valid': emailControl.valid}">
-            <div class="success-marker">
-              <ion-icon *ngIf="emailControl.valid" name="checkmark-outline"></ion-icon>
-            </div>
-            <ion-label class="standard-bfb-label" position="floating">E-mail</ion-label> 
-            <ion-input class="standard-bfb-input" type="text" name="email" formControlName="email"
+            <ion-input class="standard-input" type="text" name="email" formControlName="email"
               [ngClass]="{'input-error': emailControl.invalid && emailControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -66,11 +54,7 @@
         <ion-item class="input-spacer">
           <div class="input-inner"
             [ngClass]="{'input-valid': passwordControl.valid}">
-            <div class="success-marker">
-              <ion-icon *ngIf="passwordControl.valid" name="checkmark-outline"></ion-icon>
-            </div>
-            <ion-label class="standard-bfb-label" position="floating">Password</ion-label> 
-            <ion-input class="standard-bfb-input" type="password" name="password" formControlName="password"
+            <ion-input class="standard-input" type="password" name="password" formControlName="password"
               [ngClass]="{'input-error': passwordControl.invalid && passwordControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>

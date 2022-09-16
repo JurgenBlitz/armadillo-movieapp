@@ -4,13 +4,18 @@
   <ion-row *ngIf="loading">
     <ion-spinner name="bubbles" color="white"></ion-spinner>
   </ion-row>
-  <ion-row class="movies-page-header" *ngIf="currentMovies?.length">
-    <ion-text>Current playing movies</ion-text>
+  <ion-row class="movies-page-header" *ngIf="currentMovies?.length && !loading">
+    <ion-text>{{activeList === 'current' ? 
+      'Current movies playing' : 'Most popular movies'}}
+    </ion-text>
+    <ion-button *ngIf="activeList === 'current'" (click)="getPopularMovies()">Popular movies</ion-button>
+    <ion-button *ngIf="activeList === 'popular'" (click)="getPopularMovies()">Current movies</ion-button>
+    <ion-button (click)="refreshMovies()">Refresh</ion-button>
   </ion-row>
 
   <ion-row>
     <ion-col>
-      <div *ngIf="currentMovies?.length" class="movies-list-container">
+      <div *ngIf="currentMovies?.length && !loading" class="movies-list-container">
         <ng-container>
           <ion-grid>
             <ion-row>
@@ -26,7 +31,7 @@
         </ng-container>
       </div>
 
-      <div *ngIf="!loading && !currentMovies.length">
+      <div *ngIf="!currentMovies.length && !loading">
         <ion-item>
           No movies were found. Please try again later.
         </ion-item>

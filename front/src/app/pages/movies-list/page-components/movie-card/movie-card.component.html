@@ -1,6 +1,18 @@
 <ion-card class="movie-card" (click)="onClick()">
-  <img loading="lazy" src="{{moviePoster}}" *ngIf="moviePoster !== ''">
-  <ion-text>{{movieInfo.title}}</ion-text>
+  <div class="movieposter-container" *ngIf="moviePoster !== ''">
+    <img class="poster" loading="lazy" src="{{moviePoster}}">
+  </div>
+  <div class="movieposter-container-notfound" *ngIf="moviePoster === ''">
+    <span>No poster available</span>
+  </div>
+  <div class="movieinfo-container">
+    <ion-item>
+      <div>
+        <span class="title">{{movieInfo.title}}</span>
+        <span class="vote">{{movieInfo.vote_average}} / 10</span>
+      </div>
+    </ion-item>
+  </div>
 </ion-card>
 
 

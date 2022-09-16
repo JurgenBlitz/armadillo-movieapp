@@ -18,10 +18,15 @@
     margin-left: 28px;
     color: white;
     font-size: 24px;
+    ion-text {
+      &.movie-release-date {
+        font-size: 16px;
+        margin-left: 20px;
+      }
+    }
   }
 }
 .modal-container {
- // --background: var(--brooklyn-black);
   width: 100%;
   height: 100%;
   --min-width: 100%;
@@ -34,19 +39,59 @@
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
-    justify-content: center;
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 350px;
+    width: calc(100% - 60px);
+    height: 100%;
+    ion-col {
+      display: flex;
+      .poster-container {
+        width: 350px;
+        img {
+          max-width: 350px;
+        }
+      }
+      .movie-info-container {
+        width: calc(100% - 300px);
+        h3 {
+          margin-left: 16px;
+          &.movie.title {
+            margin-top: 0;
+          }
+        }
+        p {
+          margin-inline-start: 16px;
+          margin-inline-end: 4px;
+        }
+        .cast-section-head {
+          font-weight: 600;
+          margin-left: 16px;
+        }
+        .cast-section-container {
+          display: flex;
+          margin-top: 10px;
+          margin-left: 16px;
+          .cast-member {
+            width: 120px;
+            .cast-member-photo {
+              height: 100px;
+              width: 80px;
+              img {
+                max-height: 100px;
+                border-radius: 4px;
+              }
+            }
+            .cast-member-name {
+              ont-size: 12px;
+            }
+          }
+        }
       }
     }
-    ion-text {
-      width: 100%;
-      text-align: center;
-    }
   }
+  ion-text {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .modal-container::part(background) {
   opacity: 0.2 !important;

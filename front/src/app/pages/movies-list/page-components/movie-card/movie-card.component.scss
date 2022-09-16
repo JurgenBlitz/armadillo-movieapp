@@ -5,8 +5,41 @@
   border-radius: 5px;
   background-color: white;
   position: relative;
-  img {
-    position: absolute;
-    top: -40px;
+  .movieposter-container, .movieposter-container-notfound{
+    height: 140px;
   }
-}
+  .movieposter-container-notfound {
+    background-color: black;
+    span {
+      color: white;
+    }
+  }
+  .movieinfo-container {
+    width: 100%;
+    height: 64px;
+    ion-item {
+      background: white;
+      height: 100%;
+      padding: 8px;
+      div {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        span{
+          color: black;
+          &.title {
+            font-size: 16px;
+            font-weight: 600;
+            }
+            &.vote {
+              margin-top: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+

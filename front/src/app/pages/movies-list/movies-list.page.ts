@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies/movies.service';
 import { ModalController } from '@ionic/angular';
 import { MovieModalComponent } from './page-components/movie-modal/movie-modal.component';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-movies-list',
@@ -10,23 +11,39 @@ import { MovieModalComponent } from './page-components/movie-modal/movie-modal.c
 })
 export class MoviesListPage implements OnInit {
   public loading: boolean;
-  public mockedMovies: any;
   public currentMovies: Array<any> = [];
+  public activeList: string;
 
   constructor(
     private moviesService: MoviesService,
     private modalCtrl: ModalController
     )
     {
-      this.loading = true;
+      this.activeList = 'current';
     }
 
   ngOnInit() {
-    this.getMovies();
+    this.getCurrentMovies();
   }
 
-  public getMovies() {
+  public getCurrentMovies() {
+    this.loading = true;
+    this.activeList = 'current';
     this.moviesService.getMoviesList().then((res: any) => {
+      if (res?.data) {
+        this.currentMovies = res.data;
+        this.loading = false;
+      }
+    }, (error) => {
+      this.loading = false;
+      console.log('error', error);
+    });
+  }
+
+  public getPopularMovies() {
+    this.activeList = 'popular';
+    this.loading = true;
+    this.moviesService.getPopularMoviesList().then((res: any) => {
       if (res?.data) {
         this.currentMovies = res.data;
         this.loading = false;
@@ -60,7 +77,7 @@ export class MoviesListPage implements OnInit {
   public refreshMovies() {
     this.loading = true;
     this.currentMovies = [];
-    this.getMovies();
+    this.activeList === 'current' ? this.getCurrentMovies() : this.getPopularMovies();
   }
 
 }

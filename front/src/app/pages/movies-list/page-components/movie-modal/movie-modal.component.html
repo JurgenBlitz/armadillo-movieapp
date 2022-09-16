@@ -7,12 +7,33 @@
     </ion-item>
     <ion-item class="modal-header-text">
       <ion-text>{{data.movieData.title}}</ion-text>
+      <ion-text class="movie-release-date">Released on {{data.movieData.release_date}}</ion-text>
     </ion-item>
   </ion-toolbar>
 </ion-header>
 <ion-content class="modal-container">
   <ion-row class="modal-content">
-    <img loading="lazy" src="{{moviePoster}}">
+    <ion-col>
+      <div class="poster-container">
+        <img loading="lazy" src="{{moviePoster}}">
+      </div>
+      <div class="movie-info-container">
+        <h3 class="movie-title">{{data.movieData.title}}</h3>
+        <p class="overview">{{data.movieData.overview}}</p>
+        <ion-text class="cast-section-head">Cast</ion-text>
+        <div class="cast-section-container">
+          
+          <div class="cast-member" *ngFor="let castmember of data.cast">
+            <div class="cast-member-photo">
+              <img src="{{moviePosterBaseUrls}}{{castmember.profile_path}}">
+            </div>
+            <div class="cast-member-name">
+              <span>{{castmember.original_name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-col>
   </ion-row>
 </ion-content>
 
