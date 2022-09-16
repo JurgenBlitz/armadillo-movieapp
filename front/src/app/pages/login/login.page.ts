@@ -13,6 +13,7 @@ export class LoginPage implements OnInit  {
 
   public loginForm: FormGroup;
   public formError: boolean;
+  public useCredentials: boolean;
   public emailControl: AbstractControl;
   public passwordControl: AbstractControl;
   constructor(
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit  {
     private modalCtrl: ModalController
   ) {
     this.formError = false;
+    this.useCredentials = false;
     this.createFormGroup();
   }
 
@@ -69,6 +71,11 @@ export class LoginPage implements OnInit  {
       component: SignupModalComponent,
       cssClass: 'custom-modal',
       backdropDismiss: false
+    })
+    signupModal.onDidDismiss().then((data) => {
+      if (data) {
+        this.useCredentials = true;
+      }
     })
     await signupModal.present();
   }

@@ -12,8 +12,8 @@
     <ion-col>
       <ion-item>
         <div class="form-header-items">
-          <ion-text class="centered-text default-text form-header">Create your free account</ion-text>
-          <span>All fields are required</span>
+          <ion-text class="centered-text default-text form-header">{{welcomeMessage ? 'Signup successful!' : 'Create your free account'}}</ion-text>
+          <span [ngClass]="{'hidden': welcomeMessage}">All fields are required</span>
         </div>
       </ion-item>
       <ion-row class="standard-form-items">
@@ -25,6 +25,7 @@
           <div class="input-inner"
             [ngClass]="{'input-valid': surnameControl.valid}">
             <ion-input class="standard-input" type="text" name="firstname" formControlName="firstname"
+              placeholder="First name"
               [ngClass]="{'input-error': firstnameControl.invalid && firstnameControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -35,6 +36,7 @@
           <div class="input-inner"
             [ngClass]="{'input-valid': surnameControl.valid}">
             <ion-input class="standard-input" type="text" name="surname" formControlName="surname"
+              placeholder="Last name"
               [ngClass]="{'input-error': surnameControl.invalid && surnameControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -45,6 +47,7 @@
           <div class="input-inner"
             [ngClass]="{'input-valid': emailControl.valid}">
             <ion-input class="standard-input" type="text" name="email" formControlName="email"
+              placeholder="E-mail"
               [ngClass]="{'input-error': emailControl.invalid && emailControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
@@ -55,6 +58,7 @@
           <div class="input-inner"
             [ngClass]="{'input-valid': passwordControl.valid}">
             <ion-input class="standard-input" type="password" name="password" formControlName="password"
+              placeholder="Password"
               [ngClass]="{'input-error': passwordControl.invalid && passwordControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>

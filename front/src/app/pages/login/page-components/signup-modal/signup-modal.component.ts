@@ -13,6 +13,7 @@ export class SignupModalComponent implements OnInit {
 
   public signupForm: FormGroup;
   public formError: boolean;
+  public welcomeMessage: boolean;
   public firstnameControl: AbstractControl;
   public surnameControl: AbstractControl;
   public emailControl: AbstractControl;
@@ -54,6 +55,10 @@ export class SignupModalComponent implements OnInit {
       this.usersService.signupUser(this.signupForm.value).then((res: any) => {
         if (res?.status === 200) {
           this.formError = false;
+          this.welcomeMessage = true;
+          setTimeout(() => {
+            this.modalCtrl.dismiss('success')
+          }, 2000);
         };
       }, (error) => {
         console.log('error', error)
