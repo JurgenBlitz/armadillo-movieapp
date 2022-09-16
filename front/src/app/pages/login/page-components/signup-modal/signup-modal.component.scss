@@ -1,0 +1,161 @@
+@import '../../../../../theme/variables.scss';
+@import '../../../../../theme/mixins.scss';
+.modal-header {
+  --background: var(--ion-background-color, #121212);
+  height: 64px;
+  --min-height: 64px;
+  .modal-buttons {
+    .dismiss-button {
+      height: 32px;
+      width: 32px;
+      border-radius: 25px;
+      margin-left: 12px;
+      padding-left: 5px;
+      ion-icon {
+        font-size: 22px;
+      }
+    }
+  }
+  .modal-header-text {
+    margin-left: 28px;
+    color: white;
+    font-size: 24px;
+  }
+}
+    .standard-form-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .form-header-items, .form-error-items {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        .form-header {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+      }
+      .standard-form-container > ion-col {
+        position: relative;
+      }
+      .form-error-items > span {
+        color: var(--ion-color-danger-shade);
+      }
+      .standard-form-items {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 36px;
+        form {
+          @include media-min-max-width( 'xs', 'ssm') {
+            width: 300px;
+          }
+          @include media-min-max-width( 'ssm', 'sm') {
+            width: 360px;
+          }
+          width: 500px;
+          .input-spacer {
+            width: 100%;
+            margin-bottom: 40px;
+            .input-inner {
+              width: 100%;
+              padding: 5px;
+              height: 64px;
+              background: var(--ion-color-mediumgrey);
+              border-radius: 2px;
+              position: relative;
+              .success-marker {
+                position: absolute;
+                top: 0;
+                right: 14px;
+                z-index: 10;
+                padding-top: 16px;
+                height: 100%;
+                ion-icon {
+                  font-size: 34px;
+                }
+              }
+              label {
+                color: var(--form-default-text);
+              }
+              .standard-bfb-label {
+                color: var(--form-grey-text);
+                position: absolute;
+                z-index: 5;
+                margin-left: 10px;
+              }
+              .standard-bfb-input {
+                width: 100%;
+                height: 100%;
+                background: var(--ion-color-mediumgrey);
+                color: var(--form-default-text);
+                input {
+                  font-weight: 500;
+                  line-height: 21.6px;
+                  color: var(--form-default-text);
+                  &.native-input {
+                    --padding-start: 10px;
+                    --padding-end: 10px;
+                    --padding-top: 28px;
+                    height: 100%;
+                  }
+                }
+                input:focus {
+                  border: 2px solid var(--form-input-border);
+                  border-radius: 2px;
+                } 
+              }
+            }
+          }
+          .input-spacer:last-of-type {
+            margin-bottom: 56px;
+          }
+          .primary-btn {
+            width: calc(100% - 24px);
+            margin-left: 12px;
+            margin-right: 12px;
+            height: 40px;
+            border-radius: 2px;
+            background: var(--button-primary);
+            font-size: 16px;
+          }
+          
+          .primary-btn-disabled {
+            @extend .primary-btn;
+            background: var(--button-primary-disabled);
+          }
+        }
+      }
+      .create-form-link {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-bottom: 40px;
+        div {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }    
+  
+
+.form-error-msg {
+  color: var(--form-error-boxtint);
+}
+.input-valid {
+  border: 1px solid var(--form-success-boxtint);
+}
+
+.input-error {
+  border: 2px solid var(--form-error-boxtint);
+  border-radius: 2px;
+}
+
+.item-interactive.ion-valid,
+.item-interactive.ion-invalid {
+  --highlight-background: transparent;
+}
+

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { UsersService } from '../../services/users/users.service';
-
+import { ModalController } from '@ionic/angular';
+import { SignupModalComponent } from './page-components/signup-modal/signup-modal.component';
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
@@ -18,29 +18,32 @@ export class LoginPage implements OnInit  {
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) {
     this.formError = false;
-  }
-
-  ngOnInit() {
     this.createFormGroup();
   }
 
-  createFormGroup() {
+  ngOnInit() {
+
+  }
+
+  public createFormGroup() {
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.minLength(4)]],
-      password: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(12)]]
+      email: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]]
     });
     this.emailControl = this.loginForm.get('email');
     this.passwordControl = this.loginForm.get('password');
   }
 
-  onLogin() {
+  public onLogin() {
     if (this.loginForm.valid) {
       this.usersService.loginUser(this.loginForm.value).then((res: any) => {
         if (res?.status === 200) {
           this.formError = false;
+          this.loginForm.reset();
           this.router.navigate(['/movies-list']);
         };
       }, (error) => {
@@ -50,14 +53,23 @@ export class LoginPage implements OnInit  {
     }
   }
 
-  redirectToMoviesList() {
+  public redirectToMoviesList() {
     this.router.navigate(['/movies-list']);
   }
 
-  onKeydown(event){
+  public onKeydown(event){
     if (event.key === 'Backspace' || event.key === 'Delete') {
       this.formError = false;
     }
+  }
+
+  public async openSignupModal() {
+    const signupModal = await this.modalCtrl.create({
+      component: SignupModalComponent,
+      cssClass: 'custom-modal',
+      backdropDismiss: false
+    })
+    await signupModal.present();
   }
 
 }

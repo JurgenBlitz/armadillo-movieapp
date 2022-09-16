@@ -1,8 +1,11 @@
 @import '../../../theme/variables.scss';
 @import '../../../theme/mixins.scss';
+
+
 .standard-form-container {
   position: relative;
   width: 100%;
+  height: 100%;
   .form-header-items, .form-error-items {
     display: flex;
     flex-direction: column;
@@ -14,6 +17,9 @@
       font-weight: 600;
       margin-bottom: 8px;
     }
+  }
+  .standard-form-container > ion-col {
+    position: relative;
   }
   .form-error-items > span {
     color: var(--ion-color-danger-shade);
@@ -103,20 +109,18 @@
       }
     }
   }
+  .create-form-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 40px;
+    div {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
-.form-bottom-link {
-  margin-top: 10px;
-  margin-bottom: 40px;
-  font-weight: 400;
-  font-size : 18px;
-  line-height: 21.6px;
-  text-align: center;
-}
-.standard-form-error {
-  height: 22px;
-  margin-top: 5px;
-}
 .form-error-msg {
   color: var(--form-error-boxtint);
 }

@@ -22,4 +22,14 @@ export class UsersService {
       })
     })
   }
+
+  public signupUser(user) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.callUrl}/users/signup`, user, {responseType: 'json'}).subscribe((result) => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
 }

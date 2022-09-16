@@ -4,7 +4,7 @@ var MDBMoviesUrl = 'https://api.themoviedb.org/3';
 var API_KEY_v3 = 'd6b2be5b089e4559e9f0d8544e0e9dbf';
 const axios = require('axios');
 
-router.get('/list', function(req, res) {
+router.get('/list', (req, res) => {
   axios.get(`${MDBMoviesUrl}/movie/now_playing?api_key=${API_KEY_v3}`).then(response => {
     res.json({"data": response.data.results});
   })
@@ -13,7 +13,7 @@ router.get('/list', function(req, res) {
   });
 });
 
-router.get('/popular', function(req, res) {
+router.get('/popular', (req, res) => {
   axios.get(`${MDBMoviesUrl}/movie/popular?api_key=${API_KEY_v3}`).then(response => {
     res.json({"data": response.data.results});
   })
@@ -22,7 +22,7 @@ router.get('/popular', function(req, res) {
   });
 });
 
-router.get('/details/:movieId', function (req,res) {
+router.get('/details/:movieId', (req,res) => {
   if (req.params.movieId) {
     axios.get(`${MDBMoviesUrl}/movie/${req.params.movieId}/credits?api_key=${API_KEY_v3}`).then(response => {
       res.json({"data": {

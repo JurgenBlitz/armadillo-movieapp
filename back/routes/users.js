@@ -4,7 +4,7 @@ var db = require('../database.js');
 var md5 = require("md5")
 var movieDBauthUrl = 'https://api.themoviedb.org/3/';
 
-router.post('/login', function(req, res) {
+router.post('/login', (req, res) => {
   let query = "select * from user where email = ? and password = ?";
   let queryparams = [
     email = req.body.email,
@@ -22,5 +22,26 @@ router.post('/login', function(req, res) {
     })
   })
 });
+
+router.post('/signup', (req,res) => {
+  let data = {
+    firstname: req.body.firstname,
+    surname: req.body.surname,
+    email: req.body.email,
+    password: md5(req.body.password),
+  }
+  let query = 'INSERT INTO user (firstname, surname, email, password) VALUES (?,?,?,?)';
+  let queryParams = [data.firstname, data.surname, data.email, data.password];
+  db.run(query, queryParams, (error, result) => {
+    if (error){
+      res.status(400).json({"error": error.message})
+      return;
+  }
+  res.json({
+      "message": "success",
+      "status": 200,
+    })
+  })
+})
 
 module.exports = router;

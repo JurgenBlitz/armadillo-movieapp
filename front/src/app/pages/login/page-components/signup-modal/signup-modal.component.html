@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar class="toolbar-general modal-header">
+    <ion-item slot="start" class="modal-buttons">
+      <button class="dismiss-button" (click)="onModalClose()">
+        <ion-icon name="close-outline"></ion-icon>
+      </button> 
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-row class="standard-form-container">
+    <ion-col>
+      <ion-item>
+        <div class="form-header-items">
+          <ion-text class="centered-text default-text form-header">Create your free account</ion-text>
+          <span>All fields are required</span>
+        </div>
+      </ion-item>
+      <ion-row class="standard-form-items">
+        <form
+        [formGroup]="signupForm"
+        (submit)="onSignup()">
+
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': surnameControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="firstnameControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">First name</ion-label> 
+            <ion-input class="standard-bfb-input" type="text" name="firstname" formControlName="firstname"
+              [ngClass]="{'input-error': firstnameControl.invalid && firstnameControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': surnameControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="surnameControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">Surname</ion-label> 
+            <ion-input class="standard-bfb-input" type="text" name="surname" formControlName="surname"
+              [ngClass]="{'input-error': surnameControl.invalid && surnameControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': emailControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="emailControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">E-mail</ion-label> 
+            <ion-input class="standard-bfb-input" type="text" name="email" formControlName="email"
+              [ngClass]="{'input-error': emailControl.invalid && emailControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+        <ion-item class="input-spacer">
+          <div class="input-inner"
+            [ngClass]="{'input-valid': passwordControl.valid}">
+            <div class="success-marker">
+              <ion-icon *ngIf="passwordControl.valid" name="checkmark-outline"></ion-icon>
+            </div>
+            <ion-label class="standard-bfb-label" position="floating">Password</ion-label> 
+            <ion-input class="standard-bfb-input" type="password" name="password" formControlName="password"
+              [ngClass]="{'input-error': passwordControl.invalid && passwordControl.dirty}"
+              (keydown)="onKeydown($event)">
+            </ion-input>
+          </div>
+        </ion-item>
+
+        <button
+          class="primary-btn"
+          [disabled]="!signupForm.valid"
+          [ngClass]="{'primary-btn-disabled': !signupForm.valid}">
+          <ion-text>Sign up</ion-text>
+        </button>
+
+        </form>
+      </ion-row>
+      <ion-item *ngIf="formError">
+        <div class="form-error-items">
+          <span>Incorrect email or password</span>
+        </div>
+      </ion-item>
+
+    </ion-col>
+  </ion-row>
+</ion-content>
