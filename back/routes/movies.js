@@ -22,7 +22,7 @@ router.get('/popular', function(req, res) {
   });
 });
 
-router.get('/details/:movieId(\\d+)?', function (req,res) {
+router.get('/details/:movieId', function (req,res) {
   if (req.params.movieId) {
     axios.get(`${MDBMoviesUrl}/movie/${req.params.movieId}/credits?api_key=${API_KEY_v3}`).then(response => {
       res.json({"data": {

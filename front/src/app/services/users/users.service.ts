@@ -13,13 +13,13 @@ export class UsersService {
     private http: HttpClient
   ) { }
 
-  public testCall(){
+  public loginUser(user) {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.callUrl}/users/test`, {responseType: 'text'}).subscribe((result) => {
+      this.http.post(`${this.callUrl}/users/login`, user, {responseType: 'json'}).subscribe((result) => {
         resolve(result);
       }, (error) => {
         reject(error);
-      });
-    });
+      })
+    })
   }
 }

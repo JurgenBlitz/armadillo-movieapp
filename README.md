@@ -1,4 +1,3 @@
-# Brooklyn FitBoxing Home App
 ### Prueba técnica de Jorge González-Páramo para Armadillo Amarillo
 
 Esta aplicación está creada principalmente con 3 pilares principales: **ExpressJS** para el backend, **Ionic/Angular** para el front, y **SQLite** para crear una pequeña base de datos que pudiera desplegar con el propio backend. También se han consumido varias tazas de café durante el desarrollo de la app, aunque su contribución no se refleja en el código o el package.json. 
@@ -18,23 +17,22 @@ Para el frontend no he añadido ninguna librería, ya que las dependencias de Io
 
 ## Preguntas teóricas
 
-- 1. **¿Cómo podría gestionarse la paginación tanto desde el frontend como desde el backend?**
+1. **¿Cómo podría gestionarse la paginación tanto desde el frontend como desde el backend?**
 
 * En el directorio de back, modificaría en `routes/movies` el servicio `/list` para que aceptase opcionalmente un parámetro page, para poder incluirlo en su petición al final de la url (ejemplo, https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&page=1).
 * En front, modificaría el controlador y la template del componente en `src/app/pages/movies-list` para incluir la dependencia IonInfiniteScroll de forma que, al llegar el scroll al final de los resultsados de cada página, el controlador volviese a llamar al servicio `getMoviesList` y concatenar los nuevos resultados con la lista ya existente de pelñiculas. Modificaría, a su vez, este servicio para que pudiese aceptar también el parámetro **page** de forma opcional, para incluirlo en su llamada al backend en caso de recibirlo.
 
-- 2. **Por defecto, ¿que ocurre en una aplicación Ionic funcionando en un dispositivo Android al pulsar el botón físico de Atrás?**
+2. **Por defecto, ¿que ocurre en una aplicación Ionic funcionando en un dispositivo Android al pulsar el botón físico de Atrás?**
 
 Hasta la versión 3 de Ionic, el comportamiento por defecto era que la aplicación se cerraba independientemente de la página, componente o modal en la que nos encontrásemos. Este comportamiento se corrigió en versiones posteriores y en la actualidad el botón mencionado retrocede un paso en la navegación por cada click.
 
-- 3. **¿Cómo podría cerrarse la app con dicho botón?**
+3. **¿Cómo podría cerrarse la app con dicho botón?**
 
 En un proyecto que use Cordova o Capacitor, se puede anteponer el comportamiento que deseemos en cada componente importando la dependencia **Platform** de `@ionic/angular` en el controlador y posteriormente, en el constructor, utilizar un código similar a éste:
 
   import { Subscription } from 'rxjs';
   import { Plugins } from '@capacitor/core';
   const { App } = Plugins;
-
   export class MyComponent {
     public backButtonSubscription = new Subscription();
 
@@ -56,7 +54,7 @@ En un proyecto que use Cordova o Capacitor, se puede anteponer el comportamiento
   - **page-components**: Todo componente que pueda extraer para aliviar de carga a una vista o página, pero que solo pueda aparecer en el contexto de dicha página, está incluido en un subdirectorio dentro de cada **page**.
   - **shared-components**: En este directorio alojo cualquier componente que pueda ser reutilizable en diferentes puntos de la app.
 
-  
+
 
 
 

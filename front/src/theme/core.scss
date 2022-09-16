@@ -8,16 +8,6 @@ ion-content {
   --background: transparent;
 }
 
-// bare-bones ion-item with no paddings, colors, borders etc
-ion-item {
-  --min-height: 0;
-  --background: none;
-  --padding-start: 0;
-  --inner-padding-end: 0;
-  --inner-border-width: 0 0 0 0;
-  --highlight-color-focused: transparent;
-}
-
 // Variables related to text
 .default-text {
   color: var(--form-default-text);
@@ -37,13 +27,4 @@ ion-item {
 .centered-text {
   width: 100%;
   text-align: center;
-}
-
-// Styles to override default ion modal
-.custom-modal .modal-wrapper {
-  --min-width: 100%;
-  --min-height: 100%;
-  background: transparent !important;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
 }

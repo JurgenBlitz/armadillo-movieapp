@@ -13,18 +13,17 @@
         (submit)="onLogin()">
         <ion-item class="input-spacer">
           <div class="input-inner"
-            [ngClass]="{'input-valid': usernameControl.valid}">
+            [ngClass]="{'input-valid': emailControl.valid}">
             <div class="success-marker">
-              <ion-icon *ngIf="usernameControl.valid" name="checkmark-outline"></ion-icon>
+              <ion-icon *ngIf="emailControl.valid" name="checkmark-outline"></ion-icon>
             </div>
-            <ion-label class="standard-bfb-label" position="floating">User name</ion-label> 
-            <ion-input class="standard-bfb-input" type="text" name="username" formControlName="username"
-              [ngClass]="{'input-error': usernameControl.invalid && usernameControl.dirty}"
+            <ion-label class="standard-bfb-label" position="floating">E-mail</ion-label> 
+            <ion-input class="standard-bfb-input" type="text" name="email" formControlName="email"
+              [ngClass]="{'input-error': emailControl.invalid && emailControl.dirty}"
               (keydown)="onKeydown($event)">
             </ion-input>
           </div>
         </ion-item>
-
 
         <ion-item class="input-spacer">
           <div class="input-inner"
@@ -49,6 +48,11 @@
 
         </form>
       </ion-row>
+      <ion-item *ngIf="formError">
+        <div class="form-error-items">
+          <span>Incorrect email or password</span>
+        </div>
+      </ion-item>
     </ion-col>
   </ion-row>
 </ion-content>

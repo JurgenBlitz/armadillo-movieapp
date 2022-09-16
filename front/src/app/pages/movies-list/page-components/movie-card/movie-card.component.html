@@ -1,5 +1,6 @@
 <ion-card class="movie-card" (click)="onClick()">
-  <ion-text>Movie</ion-text>
+  <img loading="lazy" src="{{moviePoster}}" *ngIf="moviePoster !== ''">
+  <ion-text>{{movieInfo.title}}</ion-text>
 </ion-card>
 
 

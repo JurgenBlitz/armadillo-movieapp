@@ -12,32 +12,41 @@ import { UsersService } from '../../services/users/users.service';
 export class LoginPage implements OnInit  {
 
   public loginForm: FormGroup;
-  public formErrorMsg: string;
-  public usernameControl: AbstractControl;
+  public formError: boolean;
+  public emailControl: AbstractControl;
   public passwordControl: AbstractControl;
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private router: Router
   ) {
-    this.formErrorMsg = '';
+    this.formError = false;
+  }
+
+  ngOnInit() {
     this.createFormGroup();
   }
 
-  ngOnInit() {}
-
   createFormGroup() {
     this.loginForm = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.minLength(4)]],
+      email: [null, [Validators.required, Validators.minLength(4)]],
       password: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(12)]]
     });
-    this.usernameControl = this.loginForm.get('username');
+    this.emailControl = this.loginForm.get('email');
     this.passwordControl = this.loginForm.get('password');
   }
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.redirectToMoviesList();
+      this.usersService.loginUser(this.loginForm.value).then((res: any) => {
+        if (res?.status === 200) {
+          this.formError = false;
+          this.router.navigate(['/movies-list']);
+        };
+      }, (error) => {
+        console.log('error', error)
+        this.formError = true;
+      })
     }
   }
 
@@ -47,7 +56,7 @@ export class LoginPage implements OnInit  {
 
   onKeydown(event){
     if (event.key === 'Backspace' || event.key === 'Delete') {
-      this.formErrorMsg = '';
+      this.formError = false;
     }
   }
 
